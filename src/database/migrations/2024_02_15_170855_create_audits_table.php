@@ -22,6 +22,12 @@ return new class extends Migration
             $table->longText('after');
 
             $table->timestamps();
+
+            $table->index('auditType');
+            $table->index('auditable_id');
+            $table->index('auditable_type');
+            $table->index('created_at');
+            $table->index('updated_at');
         });
     }
 

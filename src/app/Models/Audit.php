@@ -3,24 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
- *
+ * @property string $auditType
+ * @property string $before
+ * @property string $after
+ * @property int $auditable_id
+ * @property string $auditable_type
  */
 class Audit extends Model
 {
     use HasTimestamps;
 
-    /**
-     *
-     */
-    const AuditType = [
-        'create',
-        'update'
-    ];
+    const AUDIT_TYPE_CREATE = 'created';
+    const AUDIT_TYPE_UPDATE = 'updated';
 
     /**
      * @var string
@@ -33,7 +31,9 @@ class Audit extends Model
     protected $fillable = [
         'auditType',
         'before',
-        'after'
+        'after',
+        'auditable_id',
+        'auditable_type',
     ];
 
     /**
