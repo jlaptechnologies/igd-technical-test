@@ -12,6 +12,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $seeders = [
+            MemberSeeder::class,
+        ];
+
+        foreach ($seeders as $seeder) {
+            /**
+             * @var Seeder $seeder
+             */
+            $seeder = new $seeder();
+            $seeder->run();
+        }
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
