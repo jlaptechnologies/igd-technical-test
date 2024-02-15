@@ -25,6 +25,6 @@ class Member extends Model
      */
     public function memberDetail(): HasOne
     {
-        return $this->hasOne(MemberDetail::class);
+        return $this->hasOne(MemberDetail::class, 'member_id', 'id');
     }
 }
