@@ -8,6 +8,7 @@ services:
       target: app
     volumes:
       - ./:/srv/app/
+      - ./src/.env:/srv/app/src/.env
     working_dir: /srv/app/src/
     networks:
       - igd-challenge-network
