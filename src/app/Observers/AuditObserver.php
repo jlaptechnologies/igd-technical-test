@@ -23,7 +23,7 @@ class AuditObserver implements ShouldHandleEventsAfterCommit
                 'auditable_id' => $model->{$model->getKeyName()},
             ]);
         } catch (\Throwable $t) {
-            \logger()->error($t->getMessage(),$t->getTrace());
+            \logger()->error($t->getMessage(), $t->getTrace());
         }
     }
 
@@ -42,7 +42,7 @@ class AuditObserver implements ShouldHandleEventsAfterCommit
                 'auditable_id' => $model->{$model->getKeyName()},
             ]);
         } catch (\Throwable $t) {
-            \logger()->error($t->getMessage(),$t->getTrace());
+            \logger()->error($t->getMessage(), $t->getTrace());
         }
     }
 
