@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $seeders = [
             MemberSeeder::class,
+            GameSeeder::class,
         ];
 
         foreach ($seeders as $seeder) {
