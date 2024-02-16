@@ -5,8 +5,11 @@
     #highScoresTable {
         outline: black 1px solid;
     }
-    #highScoresTable > td .grey {
+    #highScoresTable tr.grey {
         background-color: #aaaaaa;
+    }
+    #highScoresTable tbody tr td:nth-child(2) {
+        text-align: center;
     }
 @endsection
 @section('content')
@@ -16,15 +19,19 @@
         </div>
     @endif
     <table id="highScoresTable">
-        <tr>
-            <th>Player Name</th>
-            <th>Average All Time Score</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>Average All Time Score</th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach($leaderBoardStats as $idx => $leaderBoardStat)
             <tr @if($idx % 2 === 0)class="grey"@endif>
-                <td>{{ $leaderBoardStat->member->firstName.' '.$leaderBoardStat->member->lastName }}</td>
+                <td>@include('partials.member.memberlink',['member'=>$leaderBoardStat->member])</td>
                 <td>{{ $leaderBoardStat->averageScore }}</td>
             </tr>
         @endforeach
+        </tbody>
     </table>
 @endsection
