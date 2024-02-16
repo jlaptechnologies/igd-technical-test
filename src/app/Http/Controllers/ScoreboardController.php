@@ -26,8 +26,6 @@ class ScoreboardController extends Controller
             'leaderBoardStats' => $this->repository->getLeaderBoard(),
         ];
 
-        dd($viewParams);
-
         return \view('scoreboard.leaderboard', $viewParams);
     }
 
