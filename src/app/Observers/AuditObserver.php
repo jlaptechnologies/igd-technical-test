@@ -3,8 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Audit;
-use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
+use App\Enums\Cache\CacheKeysEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
 
 class AuditObserver implements ShouldHandleEventsAfterCommit
 {
@@ -22,6 +23,9 @@ class AuditObserver implements ShouldHandleEventsAfterCommit
                 'auditable_type' => \get_class($model),
                 'auditable_id' => $model->{$model->getKeyName()},
             ]);
+
+            // On create, clear the cache for scores to clear out aged data
+            \cache()->forget(CacheKeysEnum::LEADERBOARD_SCORES->value);
         } catch (\Throwable $t) {
             \logger()->error($t->getMessage(), $t->getTrace());
         }
@@ -41,6 +45,9 @@ class AuditObserver implements ShouldHandleEventsAfterCommit
                 'auditable_type' => \get_class($model),
                 'auditable_id' => $model->{$model->getKeyName()},
             ]);
+
+            // On update, clear the cache for scores to clear out aged data
+            \cache()->forget(CacheKeysEnum::LEADERBOARD_SCORES->value);
         } catch (\Throwable $t) {
             \logger()->error($t->getMessage(), $t->getTrace());
         }
