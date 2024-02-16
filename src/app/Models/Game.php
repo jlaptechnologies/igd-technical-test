@@ -8,26 +8,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property string gameDateTime
- * @property int playerOneMemberId
- * @property int playerOneScore
- * @property int playerTwoMemberId
- * @property int playerTwoScore
+ * @property int playerMemberId
+ * @property int playerScore
  */
 class Game extends Model
 {
-    use HasFactory, AuditableTrait, HasTimestamps;
+    use HasFactory, AuditableTrait, HasTimestamps, SoftDeletes;
 
     protected $table = 'games';
 
     public $fillable = [
         'gameDateTime',
-        'playerOneMemberId',
-        'playerOneScore',
-        'playerTwoMemberId',
-        'playerTwoScore',
+        'playerMemberId',
+        'playerScore',
     ];
 
     /**

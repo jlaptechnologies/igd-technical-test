@@ -24,6 +24,7 @@ class GameRepository implements RepositoryInterface
             ->selectRaw(
                 "gs.memberId, ROUND(AVG(gs.playerScore)) AS averageScore ".
                 "FROM game_scores gs " .
+                "WHERE gs.gameId NOT IN (SELECT g.id FROM games g WHERE g.deleted_at IS NULL) " .
                 "GROUP BY gs.memberId " .
                 "ORDER BY averageScore DESC " .
                 "LIMIT 10"
