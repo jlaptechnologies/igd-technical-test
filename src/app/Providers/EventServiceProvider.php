@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\GameScore;
 use App\Models\Member;
 use App\Models\MemberDetail;
 use App\Observers\AuditObserver;
@@ -30,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
     {
         Member::observe(AuditObserver::class);
         MemberDetail::observe(AuditObserver::class);
+        GameScore::observe(AuditObserver::class);
     }
 
     /**
