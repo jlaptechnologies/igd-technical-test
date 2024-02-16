@@ -6,6 +6,7 @@ use App\Models\Traits\AuditableTrait;
 use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -30,18 +31,10 @@ class Game extends Model
     ];
 
     /**
-     * @return HasOne
+     * @return HasMany
      */
-    public function playerOne(): HasOne
+    public function scores(): HasMany
     {
-        return $this->hasOne(Member::class, 'id', 'playerOneMemberId');
-    }
-
-    /**
-     * @return HasOne
-     */
-    public function playerTwo(): HasOne
-    {
-        return $this->hasOne(Member::class, 'id', 'playerTwoMemberId');
+        return $this->hasMany(GameScore::class, 'gameId', 'id');
     }
 }

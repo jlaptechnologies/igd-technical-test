@@ -18,8 +18,6 @@ class GameFactory extends Factory
     {
         return [
             'gameDateTime' => \fake()->dateTimeBetween('-24 months'),
-            'playerOneScore' => \mt_rand(243, 585),
-            'playerTwoScore' => \mt_rand(243, 585),
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Game;
+use App\Models\GameScore;
 use App\Models\Member;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,18 +20,20 @@ class GameSeeder extends Seeder
         Game::factory($members->count() * 25)
             ->make()
             ->each(function(Game $game)use($members) {
-                $playerOne = $members->random()->id;
-                $playerTwo = $members->random()->id;
-
-                // Keep going until random selects a different id
-                while($playerTwo === $playerOne) {
-                    $playerTwo = $members->random()->id;
-                }
-
-                $game->playerOneMemberId = $playerOne;
-                $game->playerTwoMemberId = $playerTwo;
 
                 $game->save();
+
+                $totalPlayers = \mt_rand(2,4); // noticed the "at least" in bold
+
+                $players = $members->random($totalPlayers);
+
+                $players->each(function (Member $member) use($game) {
+                    GameScore::create([
+                        'gameId' => $game->{$game->getKeyName()},
+                        'memberId' => $member->{$member->getKeyName()},
+                        'playerScore' => \mt_rand(248, 589),
+                    ]);
+                });
             });
     }
 }

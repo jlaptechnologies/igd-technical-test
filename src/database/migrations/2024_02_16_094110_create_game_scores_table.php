@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('game_scores', function (Blueprint $table) {
             $table->id();
 
-            $table->dateTime('gameDateTime');
+            $table->unsignedBigInteger('gameId');
+            $table->unsignedBigInteger('memberId');
+            $table->mediumInteger('playerScore', false, true);
+
+            $table->foreign('gameId')->references('id')->on('games');
+            $table->foreign('memberId')->references('id')->on('members');
 
             $table->timestamps();
 
-            $table->index('gameDateTime');
             $table->index('created_at');
             $table->index('updated_at');
         });
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('game_scores');
     }
 };
