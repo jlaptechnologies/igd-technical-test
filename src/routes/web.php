@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ScoreboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [ScoreboardController::class, 'showMainScoreBoard'])
+    ->name('mainScoreBoard');
+
+Route::group(['prefix' => '/member', 'as' => 'member.'], function() {
+
+    Route::get('/list', [MemberController::class, 'list'])
+        ->name('list');
+
+    Route::get('/{id}', [MemberController::class, 'memberPage'])
+        ->name('profile');
+
+    Route::put('/updateMemberDetails', [MemberController::class, 'updateMemberDetails'])
+        ->name('updateMemberDetails');
+
 });
