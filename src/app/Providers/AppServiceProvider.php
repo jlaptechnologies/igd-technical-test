@@ -14,7 +14,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this
+            ->app
+            ->when(ScoreboardController::class)
+            ->needs(RepositoryInterface::class)
+            ->give(function(){
+                return new GameRepository();
+            });
     }
 
     /**
@@ -22,10 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this
-            ->app
-            ->when(ScoreboardController::class)
-            ->needs(RepositoryInterface::class)
-            ->give(GameRepository::class);
+
     }
 }
