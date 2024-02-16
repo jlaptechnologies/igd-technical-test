@@ -17,8 +17,9 @@ class MemberDetailFactory extends Factory
     public function definition(array $attributes = []): array
     {
         return [
-            'member_id' => $attributes['member_id']??null,
-            'email' => $attributes['email']??$this->faker->email(),
+            'member_id' => $attributes['member_id'] ?? null,
+            'email' => $attributes['email'] ?? $this->faker->email(),
+            'dateJoined' => $attributes['dateJoined'] ?? $this->faker->dateTimeBetween('-28 months', '-24 months')
         ];
     }
 }
