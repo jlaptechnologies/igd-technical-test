@@ -28,7 +28,7 @@
                     <li><a href="{{ \route($route) }}">{{ $description }}</a></li>
                     @endforeach
                 </ul>
-            </div
+            </div>
             @isset($errors)
                 @if($errors->count() > 0)
                     @include('partials.errors.errorList', ['errors' => $errors])

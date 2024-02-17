@@ -28,8 +28,8 @@ class UpdateMemberDetailsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'memberId' => 'required|int|min:1|exists:Member',
-            'email' => 'required|int|email:rfc,dns|unique:\App\Models\MemberDetail,email'
+            'memberId' => 'required|int|min:1|exists:\App\Models\Member,id',
+            'email' => 'required|email:rfc,dns|unique:\App\Models\MemberDetail,email'
         ];
     }
 }

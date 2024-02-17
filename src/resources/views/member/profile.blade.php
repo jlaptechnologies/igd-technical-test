@@ -23,6 +23,10 @@
             <span>{{ $member->lastName }}</span>
         </fieldset>
         <fieldset>
+            <legend>Date Joined</legend>
+            <span>{{ $member->memberDetail->dateJoined }}</span>
+        </fieldset>
+        <fieldset>
             <legend>Email</legend>
             <span>{{ $member->memberDetail->email }}</span>
         </fieldset>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MemberDetailsController;
 use App\Http\Controllers\ScoreboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,7 @@ Route::group(['prefix' => '/member', 'as' => 'member.'], function() {
     Route::get('/updateMemberDetails/{id}', [MemberController::class, 'showUpdateMemberDetails'])
         ->name('showUpdateMemberDetails');
 
-    Route::put('/updateMemberDetails', [MemberController::class, 'updateMemberDetails'])
+    Route::put('/updateMemberDetails', [MemberDetailsController::class, 'updateMemberDetails'])
         ->name('updateMemberDetails');
 
 });

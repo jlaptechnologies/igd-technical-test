@@ -48,6 +48,11 @@ class MemberController extends Controller
         return \view('member.profile', ['member' => $member]);
     }
 
+    /**
+     * @param ShowMemberRequest $request
+     * @param Member $member
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
     public function showUpdateMemberDetails(ShowMemberRequest $request, Member $member)
     {
         // Load non-eager relationship
