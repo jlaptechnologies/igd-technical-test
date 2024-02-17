@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 /**
  * @property string $firstName
  * @property string $lastName
+ * @property MemberDetail $memberDetail
  */
 class Member extends Model
 {
