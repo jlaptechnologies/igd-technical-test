@@ -17,7 +17,7 @@ class GameScoreFactory extends Factory
     public function definition(array $attributes = []): array
     {
         return [
-            'score' => $attributes['score'] ?? \mt_rand(284, 589),
+            'playerScore' => $attributes['playerScore'] ?? \mt_rand(284, 589),
         ];
     }
 }

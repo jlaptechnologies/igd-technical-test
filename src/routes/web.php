@@ -39,15 +39,18 @@ Route::group(['prefix' => '/member', 'as' => 'member.'], function() {
 
 Route::group(['prefix' => 'game', 'as' => 'game.'], function() {
 
-    Route::get('/{id}', [GameController::class, 'showGame'])
-        ->name('showGame');
+    Route::get('/', [GameController::class, 'list'])
+        ->name('list');
 
     Route::get('/create', [GameController::class, 'create'])
         ->name('create');
 
-    Route::post('/create', [GameController::class, 'insert'])
+    Route::get('/show/{id}', [GameController::class, 'showGame'])
+        ->name('showGame');
+
+    Route::post('/insert', [GameController::class, 'insert'])
         ->name('insert');
 
-    Route::delete('/delete/{id}', [GameController::class, 'delete'])
+    Route::delete('/delete', [GameController::class, 'delete'])
         ->name('delete');
 });

@@ -4,6 +4,9 @@ namespace App\Http\Requests\Game;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property int $gameId
+ */
 class DeleteGameRequest extends FormRequest
 {
     /**
@@ -11,7 +14,7 @@ class DeleteGameRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +25,7 @@ class DeleteGameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'gameId' => 'required|int|min:1|exists:\App\Models\Game,id'
         ];
     }
 }

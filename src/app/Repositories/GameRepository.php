@@ -5,6 +5,9 @@ namespace App\Repositories;
 use App\Enums\Cache\CacheKeysEnum;
 use App\Models\Game;
 use App\Models\Member;
+use Database\Factories\GameFactory;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -16,6 +19,34 @@ use Illuminate\Support\Traits\EnumeratesValues;
  */
 class GameRepository implements RepositoryInterface
 {
+    /**
+     * @param array $with
+     * @return EloquentCollection|array
+     */
+    public function getAllGames(array $with = []): EloquentCollection|array
+    {
+        return Game::query()->with($with)->get();
+    }
+
+    /**
+     * @param int $id
+     * @param array $with
+     * @return EloquentBuilder|EloquentBuilder[]|EloquentCollection|Model|null
+     */
+    public function getGameById(int $id, array $with = []): Model|EloquentCollection|EloquentBuilder|array|null
+    {
+        return Game::query()->with($with)->find($id);
+    }
+
+    /**
+     * @param array $attributes
+     * @return Game|mixed
+     */
+    public function createGame(array $attributes = []): mixed
+    {
+        return Game::create($attributes);
+    }
+
     /**
      * @return Builder
      */
@@ -33,7 +64,6 @@ class GameRepository implements RepositoryInterface
                 "LIMIT 10"
             );
     }
-
 
     /**
      * @param int $memberId
@@ -80,12 +110,11 @@ class GameRepository implements RepositoryInterface
             );
     }
 
-
     /**
      * @param int $memberId
-     * @return Model|\Illuminate\Database\Eloquent\Builder|null
+     * @return Model|EloquentBuilder|null
      */
-    public function gameWithHighScoreForMemberId(int $memberId): Model|\Illuminate\Database\Eloquent\Builder|null
+    public function gameWithHighScoreForMemberId(int $memberId): Model|EloquentBuilder|null
     {
         return Game::query()
             ->with(['scores','scores.member']) // load child relationship through child relationship
@@ -102,9 +131,9 @@ class GameRepository implements RepositoryInterface
 
     /**
      * @param int $memberId
-     * @return \Illuminate\Database\Eloquent\Collection|array
+     * @return EloquentCollection|array
      */
-    public function getRecentGamesForMemberId(int $memberId): \Illuminate\Database\Eloquent\Collection|array
+    public function getRecentGamesForMemberId(int $memberId): EloquentCollection|array
     {
         return Game::query()
             ->with(['scores', 'scores.member'])

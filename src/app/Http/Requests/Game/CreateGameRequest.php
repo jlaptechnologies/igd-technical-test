@@ -4,14 +4,24 @@ namespace App\Http\Requests\Game;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $gameDateTime
+ * @property array<int,mixed> $player
+ */
 class CreateGameRequest extends FormRequest
 {
+    public function prepareForValidation()
+    {
+//        dd($this->request->all());
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        // Auth not required for demo
+        return true;
     }
 
     /**
@@ -22,7 +32,9 @@ class CreateGameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'gameDateTime' => 'required|date',
+            'player.*.memberId' => 'required|distinct|int|min:1|exists:\App\Models\Member,id',
+            'player.*.playerScore' => 'required|int|min:0|max:999',
         ];
     }
 }

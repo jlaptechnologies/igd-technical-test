@@ -5,7 +5,7 @@
         <style>
             @section('css')
             #main .navigation {
-                width: 100vw;
+                width: 99vw;
             }
             #main .navigation > ul {
                 display:flex;
@@ -13,6 +13,9 @@
             }
             #main .navigation > ul > li {
                 margin: 0 10pt;
+            }
+            .marginTop20px {
+                margin-top: 20px;
             }
             @show
         </style>
@@ -23,7 +26,9 @@
                 <ul>
                     @foreach([
                         'mainScoreBoard' => 'Main Score Board',
-                        'member.list' => 'Member List'
+                        'member.list' => 'Member List',
+                        'game.list' => 'Game List',
+                        'game.create' => 'Add Game Data',
                     ] as $route => $description)
                     <li><a href="{{ \route($route) }}">{{ $description }}</a></li>
                     @endforeach
