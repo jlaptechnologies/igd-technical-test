@@ -9,9 +9,6 @@
         grid-gap: 20px;
         grid-template-columns: 300pt 300pt;
     }
-    .marginTop20px {
-        margin-top: 20px;
-    }
     #recentGames fieldset table tbody tr:nth-child(odd) {
         background-color: #aaaaaa;
     }
@@ -47,7 +44,7 @@
         </fieldset>
     </div>
     <div id="actions" class="marginTop20px">
-        @include('partials.memberDetails.memberDetailsLink', ['member'=>$member])
+        @include('partials.memberDetails.updateMemberDetailsLink', ['member'=>$member])
     </div>
     <div id="recentGames" class="marginTop20px">
         @if($recentGames->isEmpty())
@@ -58,18 +55,18 @@
                 <legend>{{ $game->gameDateTime }}</legend>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Player Name</th>
-                            <th>Score</th>
-                        </tr>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Score</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach($game->scores as $scores)
-                            <tr>
-                                <td>@include('partials.member.memberLink', ['member' => $scores->member])</td>
-                                <td>{{ $scores->playerScore }}</td>
-                            </tr>
-                        @endforeach
+                    @foreach($game->scores as $scores)
+                        <tr>
+                            <td>@include('partials.member.memberLink', ['member' => $scores->member])</td>
+                            <td>{{ $scores->playerScore }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </fieldset>

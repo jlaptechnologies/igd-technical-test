@@ -32,7 +32,7 @@
                     @include('partials.member.memberLink', ['member'=>$member])
                 </td>
                 <td>
-                    @include('partials.memberDetails.memberDetailsLink', ['member'=>$member])
+                    @include('partials.memberDetails.updateMemberDetailsLink', ['member'=>$member])
                 </td>
             </tr>
         @endforeach
