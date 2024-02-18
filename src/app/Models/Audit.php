@@ -19,6 +19,7 @@ class Audit extends Model
 
     const AUDIT_TYPE_CREATE = 'created';
     const AUDIT_TYPE_UPDATE = 'updated';
+    const AUDIT_TYPE_DELETE = 'deleted';
 
     /**
      * @var string
