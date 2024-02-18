@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Member;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShowMemberDetailsRequest extends FormRequest
+/**
+ * @property int $memberId
+ * @property string $email
+ */
+class UpdateMemberDetailsRequest extends FormRequest
 {
-    public function prepareForValidation(): void
-    {
-        $this->merge([
-            'memberId' => $this->route('id'), // Example of input param differing from code param
-        ]);
-    }
-
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        // auth not needed for demo as per instructions
+        // Demo says auth not needed
         return true;
     }
 
@@ -31,6 +28,7 @@ class ShowMemberDetailsRequest extends FormRequest
     {
         return [
             'memberId' => 'required|int|min:1|exists:\App\Models\Member,id',
+            'email' => 'required|email:rfc,dns|unique:\App\Models\MemberDetail,email'
         ];
     }
 }

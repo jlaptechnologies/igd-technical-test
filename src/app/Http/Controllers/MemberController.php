@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ShowMemberRequest;
+use App\Http\Requests\Member\ShowMemberRequest;
 use App\Repositories\GameRepository;
 use App\Repositories\MemberRepository;
 use App\Repositories\RepositoryInterface;

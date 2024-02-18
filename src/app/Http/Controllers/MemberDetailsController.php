@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ShowMemberDetailsRequest;
-use App\Http\Requests\UpdateMemberDetailsRequest;
+use App\Http\Requests\Member\UpdateMemberDetailsRequest;
 use App\Repositories\MemberRepository;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Support\MessageBag;
