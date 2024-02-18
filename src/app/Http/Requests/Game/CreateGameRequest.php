@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Game;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShowGameRequest extends FormRequest
+class CreateGameRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

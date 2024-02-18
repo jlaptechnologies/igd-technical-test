@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Game\CreateGameRequest;
+use App\Http\Requests\Game\DeleteGameRequest;
+use App\Http\Requests\Game\ShowGameRequest;
 use App\Models\Game;
 use App\Repositories\GameRepository;
 use App\Repositories\RepositoryInterface;
@@ -18,7 +21,7 @@ class GameController extends Controller
     {
     }
 
-    public function create(CreateGameRequest $request)
+    public function create()
     {
 
     }
@@ -35,7 +38,7 @@ class GameController extends Controller
 
     }
 
-    public function insert(InsertGameRequest $request)
+    public function insert(CreateGameRequest $request)
     {
 
     }
