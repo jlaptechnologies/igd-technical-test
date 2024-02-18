@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Cache\CacheKeysEnum;
+use App\Models\Member;
 use App\Repositories\GameRepository;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;

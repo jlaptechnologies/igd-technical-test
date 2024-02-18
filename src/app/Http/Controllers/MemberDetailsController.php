@@ -39,7 +39,7 @@ class MemberDetailsController extends Controller
             \logger()->error($t->getMessage(), $t->getTrace());
 
             $response = \redirect()
-                ->back()
+                ->route('member.profile', ['id' => $member->id])
                 ->with(['errors'=>(new MessageBag(['Updating member details failed. Please check logs for details.']))]);
         } finally {
             return $response;

@@ -36,4 +36,18 @@ To seed data into the database:
 first-time deploy)
 3. Open your browser and visit [http://localhost:8090](http://localhost:8090)
 
+## Testing
 
+---
+
+Some examples of optimistic and pessimistic tests have been written. 
+
+Before running the tests, you will need to migrate the test database:
+
+`docker compose exec igd php artisan migrate:fresh --database=testing`
+
+The tests execute with phpunit:
+
+`docker compose exec igd ./vendor/bin/phpunit`
+
+Code coverage driver has been omitted for brevity. Tests don't contain unit tests, only feature tests.

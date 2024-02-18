@@ -27,7 +27,7 @@ class GameScore extends Model
     public $fillable = [
         'gameId',
         'memberId',
-        'score',
+        'playerScore',
     ];
 
     /**
