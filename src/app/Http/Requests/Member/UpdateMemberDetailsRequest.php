@@ -28,7 +28,7 @@ class UpdateMemberDetailsRequest extends FormRequest
     {
         return [
             'memberId' => 'required|int|min:1|exists:\App\Models\Member,id',
-            'email' => 'required|email:rfc,dns|unique:\App\Models\MemberDetail,email'
+            'email' => 'required|email:rfc|unique:\App\Models\MemberDetail,email'
         ];
     }
 }
