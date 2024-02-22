@@ -29,6 +29,12 @@ A setup with php-fpm + nginx running would have been more complete, but otherwis
 However, please note that the database has not been seeded at this point and accessing the site will result in empty 
 data / UI.
 
+### Getting the project running
+
+1. `docker compose build`
+2. `docker compose run --rm igd composer install -vvv`
+3. `docker composer up -d`
+
 To seed data into the database:
 
 1. run `docker compose up -d`
