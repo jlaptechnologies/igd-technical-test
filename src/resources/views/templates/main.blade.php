@@ -41,5 +41,6 @@
             @endisset
             @yield('content')
         </div>
+        @yield('inlineJs')
     </body>
 </html>
