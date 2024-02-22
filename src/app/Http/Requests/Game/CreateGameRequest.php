@@ -10,11 +10,6 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 class CreateGameRequest extends FormRequest
 {
-    public function prepareForValidation()
-    {
-//        dd($this->request->all());
-    }
-
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -33,6 +28,7 @@ class CreateGameRequest extends FormRequest
     {
         return [
             'gameDateTime' => 'required|date',
+            'player' => 'required|min:2',
             'player.*.memberId' => 'required|distinct|int|min:1|exists:\App\Models\Member,id',
             'player.*.playerScore' => 'required|int|min:0|max:999',
         ];
